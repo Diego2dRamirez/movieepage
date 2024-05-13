@@ -1,6 +1,7 @@
 // import { useEffect, useState } from 'react'
 import './App.css'
 import { Header } from './Components/Header/Header'
+import { InputSearch } from './Components/InputSearch/InputSearch'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
   return (
     <>
       <Header />
+      <InputSearch />
     </>
   )
 }
