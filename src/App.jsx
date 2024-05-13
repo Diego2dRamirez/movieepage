@@ -2,6 +2,7 @@
 import './App.css'
 import { Header } from './Components/Header/Header'
 import { InputSearch } from './Components/InputSearch/InputSearch'
+import { Tendencias } from './Components/Tendencias/Tendencias'
 
 function App() {
 
@@ -13,11 +14,11 @@ function App() {
   // .then(data => setMovie(data))
   // }, [setMovie]);
 
-          {/* {movie.results?.map((element) => (
-           <div key={element.id}><h1>{element.title}</h1>
-           <img src={`https://image.tmdb.org/t/p/w300${element.poster_path}`} alt="" />
-           </div>
-          ))} */}
+  //          {movie.results?.map((element) => (
+  //          <div key={element.id}><h1>{element.title}</h1>
+  //          <img src={`https://image.tmdb.org/t/p/w300${element.poster_path}`} alt="" />
+  //          </div>
+  //         ))} 
 
   // console.log(movie);
   // console.log(movie.results);
@@ -26,6 +27,7 @@ function App() {
     <>
       <Header />
       <InputSearch />
+      <Tendencias />
     </>
   )
 }

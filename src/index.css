@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html{
-    @apply font-Poppins
+    @apply font-Poppins italic
 }
 
 li:hover{
