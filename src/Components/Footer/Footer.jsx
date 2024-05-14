@@ -5,7 +5,7 @@ import FrontendMentor from '../../assets/frontend-mentor.png'
 
 function Footer() {
   return (
-    <footer className="w-full mt-10 flex flex-col items-center bg-DarkBlue text-white p-3 md:flex-row justify-evenly">
+    <footer className="w-full mt-10 flex flex-col items-center bg-DarkBlue text-white p-3 lg:flex-row lg:justify-evenly">
       <img src={BlueSquare2} alt="logo" className="w-36 mb-5" />
 
       <div className="mt-5">

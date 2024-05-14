@@ -1,9 +1,18 @@
-import React, { useState } from "react";
-import { FaBars } from "react-icons/fa";
-import { FaXmark } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
 
 
 function NavBar() {
+  const [categorias, setCategorias] = useState([])
+
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=639ffac191a35e90345c4e5e6f416515')
+      .then(response => response.json())
+      .then(data => setCategorias(data))
+  }, []);
+
+  console.log(categorias);
+  console.log(categorias.results);
+
 
   const [open, setOpen] = useState(false);
 
@@ -14,28 +23,16 @@ function NavBar() {
       >
         <ion-icon name={open ? "close-outline" : "menu-outline"}></ion-icon>
       </div>
-      <section className={`pb-12 absolute bg-LightBlue z-[-1] left-0 w-full px-9  border-t-8 border-white ${open ? 'top-15 opacity-100' : 'top-[-50px] hidden'}  md:flex md:pb-6 md:pl-0 md:p-3 md:mt-[6.2rem] shadow-2xl md:border-none
+      <section className={`pb-12 absolute bg-LightBlue z-[-1] left-0 w-full px-9  border-t-8 border-white ${open ? 'top-15 opacity-100' : 'top-[-50px] hidden'}  md:flex md:pb-6 md:pl-0 md:p-3 md:mt-[6.2rem] shadow-xl md:border-none
       md:flex-col
         `}>
-        <h2 className="p-5 text-white text-2xl font-semibold italic text-center md:text-start">Categorías</h2>
-        <ul className="md:flex md:flex-wrap md:p-3 text-xl *:m-2 text-white *:cursor-pointer capitalize">
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
-          <li>lorem</li>
+        <h2 className="p-5 text-DarkBlue text-2xl font-semibold italic text-center md:text-start">Categorías</h2>
+        <ul className="md:flex md:flex-wrap md:p-3 md:px-6 text-xl *:mx-4  text-white *:cursor-pointer capitalize list-disc">
+          {
+            categorias.genres?.map((categoria) => (
+              <li key={categoria.id}>{categoria.name}</li>
+            ))
+          }
         </ul>
        </section>
     </nav>
