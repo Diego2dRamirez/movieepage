@@ -1,16 +1,26 @@
-import './App.css'
-import { Header } from './Components/Header/Header'
-import { InputSearch } from './Components/InputSearch/InputSearch'
-import { Tendencias } from './Components/Tendencias/Tendencias'
-import { Footer } from './Components/Footer/Footer'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import { Home } from './Components/Home'
+import { Categorias } from './Components/Categorias/Categorias'
+import { SubCategorias } from './Components/Categorias/SubCategorias'
+import { Busqueda } from './Components/Busqueda/Busqueda'
+import { Detalles } from './Components/Detalles/Detalles'
+
 
 function App() {
   return (
     <section className='w-full h-screen'>
-      <Header />
-      <InputSearch />
-      <Tendencias />
-      <Footer />
+      <HashRouter >
+
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/categorias" element={<Categorias />}/>
+          <Route path="/categorias/:name/:id" element={<SubCategorias />}/>
+          <Route path="/busqueda" element={<Busqueda />}/>
+          <Route path="/detalles" element={<Detalles />}/>
+          <Route path="*" element={<h1>No Encontrado</h1>}/>
+        </Routes>
+
+      </HashRouter>
     </section>
   )
 }

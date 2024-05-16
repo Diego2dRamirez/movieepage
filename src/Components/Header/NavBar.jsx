@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-
+import { Categorias } from "../Categorias/Categorias";
 
 function NavBar() {
-  const [categorias, setCategorias] = useState([])
+  // const [categorias, setCategorias] = useState([])
 
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=639ffac191a35e90345c4e5e6f416515')
-      .then(response => response.json())
-      .then(data => setCategorias(data))
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=639ffac191a35e90345c4e5e6f416515')
+  //     .then(response => response.json())
+  //     .then(data => setCategorias(data))
+  // }, []);
 
-  console.log(categorias);
-  console.log(categorias.results);
-
-
+  // console.log(categorias);
+  // console.log(categorias.genres);
   const [open, setOpen] = useState(false);
 
   return (
     <nav>
       <div onClick={() => setOpen(!open)}
-      className="text-3xl text-LightBlue cursor-pointer md:hidden "
+        className="text-3xl text-LightBlue cursor-pointer md:hidden "
       >
         <ion-icon name={open ? "close-outline" : "menu-outline"}></ion-icon>
       </div>
@@ -27,17 +25,14 @@ function NavBar() {
       md:flex-col
         `}>
         <h2 className="p-5 text-DarkBlue text-2xl font-semibold italic text-center md:text-start">Categorías</h2>
-        <ul className="md:flex md:flex-wrap md:p-3 md:px-6 text-xl *:mx-4  text-white *:cursor-pointer capitalize list-disc">
-          {
-            categorias.genres?.map((categoria) => (
-              <li key={categoria.id}>{categoria.name}</li>
-            ))
-          }
-        </ul>
-       </section>
+        <Categorias />
+      </section>
     </nav>
   );
 };
 
 
 export { NavBar };
+
+
+{/* <NavLink to={name.to} */ }
