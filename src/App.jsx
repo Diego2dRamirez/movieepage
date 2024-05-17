@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/categorias" element={<Categorias />}/>
           <Route path="/categorias/:name/:id" element={<SubCategorias />}/>
-          <Route path="/busqueda" element={<Busqueda />}/>
+          <Route path="/busqueda/:value" element={<Busqueda />}/>
           <Route path="/detalles" element={<Detalles />}/>
           <Route path="*" element={<h1>No Encontrado</h1>}/>
         </Routes>
