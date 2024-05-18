@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Tendencias() {
   const [movies, setMovie] = useState([])
@@ -9,11 +10,6 @@ function Tendencias() {
       .then(data => setMovie(data))
   }, [setMovie]);
 
-  // console.log(movies);
-  // console.log(movies.results);
-  const handleDetalles = (title) => {
-    alert(title)
-  }
   return (
     <section className="w-full mt-10 pl-4 mb-[3.5rem]">
       <h3 className="text-2xl text-DarkBlue font-semibold italic mb-5">Tendencias</h3>
@@ -21,10 +17,10 @@ function Tendencias() {
         {
           movies.results?.map((movie) => (
             <div key={movie.title} className='w-[150px] h-[250px]'>
-              <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="" 
-              onClick={() => handleDetalles(movie.title)}
-              />
+              <Link to={`/detalles/${movie.title}/${movie.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
 
+              </Link>
             </div>))
         }
 

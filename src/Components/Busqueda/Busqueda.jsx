@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BlueLong2 from '../../assets/blue_long_2.svg';
 import { Footer } from "../Footer/Footer";
 
@@ -33,8 +33,10 @@ function Busqueda() {
         {
           search.results?.map(movie => (
             <article key={movie.id} className="w-full bg-LightBlue flex flex-col items-center py-10 md:w-1/2">
-              <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} className="rounded-lg mb-2"
-              />
+             <Link to={`/detalles/${movie.title}/${movie.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} className="rounded-lg mb-2"
+                />
+             </Link>
               <p className="text-2xl text-DarkBlue font-semibold text-center px-3">{movie.title}</p>
               <p className="text-white text-lg font-semibold">Fecha de Lanzamiento: {movie.release_date}</p>
             </article>
