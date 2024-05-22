@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import BlueLong2 from '../../assets/blue_long_2.svg';
 import { useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
+import placeholder from '../../assets/placeholder-image.png'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Detalles() {
 
@@ -33,8 +36,11 @@ function Detalles() {
       <section className="w-full bg-LightBlue pt-44 flex flex-col items-center md:flex-row md:pb-20">
 
         <div className="mb-5 md:w-1/2 md:flex md:flex-col md:items-center">
-          <img src={`https://image.tmdb.org/t/p/w300${detalles.poster_path}`} alt={detalles.title}
-            className="rounded-lg mb-2" />
+          <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${detalles.poster_path}`} alt={detalles.title}
+            className="rounded-lg mb-2" 
+            placeholderSrc={placeholder}
+            effect="blur"
+            />
           <p className="text-3xl md:mt-5">
             <span className="text-yellow-300 mr-5">
               <ion-icon name="star-half-outline"></ion-icon>
@@ -44,8 +50,11 @@ function Detalles() {
         </div>
 
         <div className="w-full flex flex-col items-center md:w-1/2">
-          <img src={`https://image.tmdb.org/t/p/w300${detalles.backdrop_path}`} alt={detalles.title}
-            className="rounded-lg mb-2 md:w-[35rem]" />
+          <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${detalles.backdrop_path}`} alt={detalles.title}
+            className="rounded-lg mb-2 md:w-[35rem]" 
+            placeholderSrc={placeholder}
+            effect="blur"
+            />
           <p className="text-white text-center p-5 font-semibold font-sans text-xl md:px-20">{detalles.overview}</p>
         </div>
 

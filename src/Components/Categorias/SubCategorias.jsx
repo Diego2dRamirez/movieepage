@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BlueLong2 from '../../assets/blue_long_2.svg';
 import { Footer } from "../Footer/Footer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import placeholder from '../../assets/placeholder-image.png'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function SubCategorias() {
   const { id, name } = useParams();
@@ -34,8 +37,13 @@ function SubCategorias() {
             <article key={subcategoria.id} className="w-full bg-LightBlue flex flex-col items-center py-10 md:w-1/2">
 
               <Link to={`/detalles/${subcategoria.title}/${subcategoria.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w300${subcategoria.poster_path}`} alt={subcategoria.title}
-                  className="rounded-lg mb-2"/>
+                <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${subcategoria.poster_path}`} alt={subcategoria.title}
+                  className="rounded-lg mb-2"
+                  placeholderSrc={placeholder}
+                  width={300}
+                  height={450}
+                  effect="blur"
+                  />
               </Link>
               <p className="text-2xl text-DarkBlue font-semibold text-center px-3">{subcategoria.title}</p>
               <p className="text-white text-lg font-semibold">Fecha de Lanzamiento: {subcategoria.release_date}</p>

@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BlueLong2 from '../../assets/blue_long_2.svg';
 import { Footer } from "../Footer/Footer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import placeholder from '../../assets/placeholder-image.png'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+
 
 function Busqueda() {
 
@@ -29,15 +33,19 @@ function Busqueda() {
         </span>
         <h1 className="text-center">Busqueda de : <span> {value} </span> </h1>
       </div>
-      <section className="flex flex-wrap w-full">
+      <section className="flex flex-wrap w-full bg-LightBlue">
         {
           search.results?.map(movie => (
-            <article key={movie.id} className="w-full bg-LightBlue flex flex-col items-center py-10 md:w-1/2">
+            <article key={movie.id} className="w-full flex flex-col items-center py-10 md:w-1/2">
              <Link to={`/detalles/${movie.title}/${movie.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} className="rounded-lg mb-2"
+                <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} className="rounded-lg"
+                placeholderSrc={placeholder}
+                width={300}
+                height={450}
+                effect="blur"
                 />
              </Link>
-              <p className="text-2xl text-DarkBlue font-semibold text-center px-3">{movie.title}</p>
+              <p className="text-2xl text-DarkBlue font-semibold text-center px-3 mt-6">{movie.title}</p>
               <p className="text-white text-lg font-semibold">Fecha de Lanzamiento: {movie.release_date}</p>
             </article>
           ))

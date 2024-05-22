@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import placeholder from '../../assets/placeholder-image.png'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function Tendencias() {
   const [movies, setMovie] = useState([])
@@ -18,7 +21,12 @@ function Tendencias() {
           movies.results?.map((movie) => (
             <div key={movie.title} className='w-[150px] h-[250px]'>
               <Link to={`/detalles/${movie.title}/${movie.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+                <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title}
+                  placeholderSrc={placeholder}
+                  width={150}
+                  height={250}
+                  effect="blur"
+                />
 
               </Link>
             </div>))
