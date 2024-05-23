@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 html{
-    @apply font-Poppins italic
+    @apply font-Poppins italic bg-LightBlue
 }
 
 li:hover{
     @apply text-blue-900 
+}
+.placehorder{
+    @apply w-[150px] h-[222px]
 }

@@ -20,7 +20,7 @@ function InputSearch() {
             onChange={handleValueInput}
           />
           <Link to={`/busqueda/${valueInput}`}>
-            <div className="text-3xl text-red-600 flex items-center bg-LightBlue rounded-tr-lg rounded-br-lg h-[3rem] hover:bg-LightGreen cursor-pointer">
+            <div className="text-3xl text-red-600 flex items-center border-2 border-LightGreen bg-LightBlue rounded-tr-lg rounded-br-lg h-[3rem] hover:bg-LightGreen cursor-pointer">
               <ion-icon name="search-outline"
               ></ion-icon>
             </div>

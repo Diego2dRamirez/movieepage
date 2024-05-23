@@ -8,6 +8,11 @@ import { HeaderPage } from "../Header/HeaderPage";
 
 function Detalles() {
 
+  const topPage =  () =>{
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
   const { title, titleId } = useParams();
 
 
@@ -38,7 +43,6 @@ function Detalles() {
           <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${detalles.poster_path}`} alt={detalles.title}
             className="rounded-lg mb-2"
             placeholderSrc={placeholder}
-            effect="blur"
           />
           <p className="text-3xl md:mt-5">
             <span className="text-yellow-300 mr-5">
@@ -52,7 +56,6 @@ function Detalles() {
           <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${detalles.backdrop_path}`} alt={detalles.title}
             className="rounded-lg mb-2 md:w-[35rem]"
             placeholderSrc={placeholder}
-            effect="blur"
           />
           <p className="text-white text-center p-5 font-semibold font-sans text-xl md:px-20">{detalles.overview}</p>
 
@@ -68,19 +71,18 @@ function Detalles() {
 
 
       </section>
-      <div className="px-5 mb-5">
+      <section className="px-5 pb-5 bg-LightBlue">
         <h2 className="text-white font-semibold text-3xl mb-4">Recomendados</h2>
         <article className="overflow-x-auto overflow-y-hidden whitespace-nowrap h-[300px] w-full pl-5 *:mx-2 *:my-2 *:inline-block">
 
           {
             recomendados.results?.map((movie) => (
-              <div key={movie.title} className='w-[150px] h-[250px]'>
-                <Link to={`/detalles/${movie.title}/${movie.id}`}>
+              <div key={movie.title} className='w-[150px] h-[250px] relative'>
+                <Link to={`/detalles/${movie.title}/${movie.id}`} onClick={() => topPage()}>
                   <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title}
                     placeholderSrc={placeholder}
-                    width={150}
-                    height={250}
-                    effect="blur"
+                    wrapperClassName="placehorder"
+                    className="top-0 absolute"
                   />
 
                 </Link>
@@ -88,11 +90,13 @@ function Detalles() {
           }
 
         </article>
-      </div>
+      </section>
       <Footer />
 
     </>
   );
+
+  
 };
 
 export { Detalles };
