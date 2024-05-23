@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import BlueLong2 from '../../assets/blue_long_2.svg';
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import placeholder from '../../assets/placeholder-image.png'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { HeaderPage } from "../Header/HeaderPage";
 
 function Detalles() {
 
@@ -21,18 +21,11 @@ function Detalles() {
 
   console.log(detalles);
 
-  const navigate = useNavigate();
-  const regresar = () => {
-    navigate(-1)
-  }
   return (
     <>
-      <div className="bg-DarkBlue text-white p-5 text-3xl w-full fixed z-10">
-        <span onClick={() => regresar()} className="cursor-pointer flex justify-between items-center px-10 w-full"><ion-icon name="chevron-back-outline"></ion-icon>
-          <img src={BlueLong2} alt="BlueLong2" className="w-52 md:w-60" />
-        </span>
-        <h2 className="text-center">{title}</h2>
-      </div>
+
+      <HeaderPage title={title} /> 
+
       <section className="w-full bg-LightBlue pt-44 flex flex-col items-center md:flex-row md:pb-20">
 
         <div className="mb-5 md:w-1/2 md:flex md:flex-col md:items-center">

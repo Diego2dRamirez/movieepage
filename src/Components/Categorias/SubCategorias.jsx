@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import BlueLong2 from '../../assets/blue_long_2.svg';
+import { Link, useParams } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import placeholder from '../../assets/placeholder-image.png'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import { HeaderPage } from "../Header/HeaderPage";
 
 function SubCategorias() {
   const { id, name } = useParams();
@@ -17,24 +17,14 @@ function SubCategorias() {
       .then(data => setSubCategorias(data))
   }, []);
 
-  const navigate = useNavigate();
-  const regresar = () => {
-    navigate("/")
-  }
-
   return (
     <>
-      <div className="bg-DarkBlue text-white p-5 text-3xl w-full">
-        <span onClick={() => regresar()} className="cursor-pointer flex justify-between items-center px-10 w-full"><ion-icon name="chevron-back-outline"></ion-icon>
-          <img src={BlueLong2} alt="BlueLong2" className="w-52 md:w-60" />
-        </span>
-        <h1 className="text-center">{name}</h1>
-      </div>
-      <section className="flex flex-wrap w-full">
+      <HeaderPage title={name} />
+      <section className="flex flex-wrap w-full bg-LightBlue pt-28">
 
         {
           subCategorias.results?.map(subcategoria => (
-            <article key={subcategoria.id} className="w-full bg-LightBlue flex flex-col items-center py-10 md:w-1/2">
+            <article key={subcategoria.id} className="w-full flex flex-col items-center py-10 md:w-1/2">
 
               <Link to={`/detalles/${subcategoria.title}/${subcategoria.id}`}>
                 <LazyLoadImage src={`https://image.tmdb.org/t/p/w300${subcategoria.poster_path}`} alt={subcategoria.title}
